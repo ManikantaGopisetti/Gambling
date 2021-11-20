@@ -21,7 +21,13 @@ public class GamblingSimulator {
 		GamblingServices gambler = new GamblingServices();
 
 		for (int month = 1; month <= months; month++) {
-			gambler.monthlyBet(stake, max_Stake, min_Stake, month);
+			boolean win_status=gambler.monthlyBet(stake, max_Stake, min_Stake, month);
+			if(!win_status) {
+				break;
+			}
+			else {
+				continue;
+			}
 		}
 		sc.close();
 	}

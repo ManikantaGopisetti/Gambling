@@ -11,7 +11,7 @@ public class GamblingServices {
 	int unluckiest_day; // day where I lost maximum
 
 	// betting for one month
-	public void monthlyBet(int stake, int max_Stake, int min_Stake, int month) {
+	public boolean monthlyBet(int stake, int max_Stake, int min_Stake, int month) {
 		System.out.println("---------month " + month + " Gambling---------");
 		int win_days = 0;
 		int lost_days = 0;
@@ -33,6 +33,13 @@ public class GamblingServices {
 		System.out.println("No of days player lost in month " + month + " : " + lost_days + "\n");
 		System.out.println("luckiest day in month " + month + " : " + luckiest_day);
 		System.out.println("unluckiest day in month " + month + " : " + unluckiest_day + "\n\n");
+		
+		if(win_days>lost_days) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	// betting for 1 day
