@@ -1,40 +1,28 @@
 package com.bridgelabz.workshop;
 
+import java.util.Scanner;
+
 public class GamblingSimulator {
 
 	public static void main(String[] args) {
-		int stake = 100; // initial total amount gambler has with him every day
-		final int BET = 1; // amount per bet
-		final int WIN = 1;
-		final int LOSE = 0;
-		int max_Stake = stake + stake / 2; // amount limit after 50% gain
-		int min_Stake = stake - stake / 2; // amount limit after 50% loss
+
 		System.out.println("---welcome to Gambling Simulator Program---\n");
-		System.out.println(" your initial stack amount to start betting every day: 100$\n Every game bet: 1$\n");
-		for (int days = 1; days <= 20; days++) {
-			stake = 100;
-			while (stake > min_Stake && stake < max_Stake) { // betting until he reaches maximum or minimum stake amount
+		int stake = 100;
+		int percentage = 50; // percentage limit of gain or loss
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter no of months to play Gambling: ");
+		int months = sc.nextInt();
 
-				int dice = (int) (Math.random() * 10) % 2; // using random to decide win or lose
-				switch (dice) {
-				case WIN: // if player win the game
-					stake += BET;
-					break;
+		System.out.println(
+				" your initial stake amount to start betting every day: " + stake + "$" + "\n Every game bet: 1$\n");
+		int max_Stake = stake + (int) ((percentage / (double) 100) * stake); // amount limit after 50% gain
+		int min_Stake = stake - (int) ((percentage / (double) 100) * stake); // amount limit after 50% loss
 
-				case LOSE: // if player lose the game
-					stake -= BET;
-					break;
-				}
-			}
-			if(stake==max_Stake) {
-				System.out.println("--player won the day "+days +" bet--" );
-			}
-			else {
-				System.out.println("--player lost the day " +days +" bet--");
-			}
-			System.out.println("final stake amount at day "+days+" : " + stake + "$\n");
+		GamblingServices gambler = new GamblingServices();
+		
+		for (int month = 1; month <= months; month++) {
+			gambler.monthlyBet(stake, max_Stake, min_Stake, month);
 		}
-
+		sc.close();
 	}
-
 }
