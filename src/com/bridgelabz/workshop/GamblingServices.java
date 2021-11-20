@@ -8,6 +8,7 @@ public class GamblingServices {
 	
 	
 	public void monthlyBet(int stake, int max_Stake, int min_Stake,int month) {
+		System.out.println("---------month "+month+" Gambling---------");
 		int win_days=0;
 		int lost_days=0;
 		for (int days = 1; days <= 30; days++) {
