@@ -19,7 +19,7 @@ public class GamblingSimulator {
 		int min_Stake = stake - (int) ((percentage / (double) 100) * stake); // amount limit after 50% loss
 
 		GamblingServices gambler = new GamblingServices();
-		
+
 		for (int month = 1; month <= months; month++) {
 			gambler.monthlyBet(stake, max_Stake, min_Stake, month);
 		}
